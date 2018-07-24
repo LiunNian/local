@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Registered-members/Registered-members.iml" filepath="$PROJECT_DIR$/Registered-members/Registered-members.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chinazxt/chinazxt.iml" filepath="$PROJECT_DIR$/chinazxt/chinazxt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/configserver/configserver.iml" filepath="$PROJECT_DIR$/configserver/configserver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cpccacloud.iml" filepath="$PROJECT_DIR$/cpccacloud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eurekaserver/eurekaserver.iml" filepath="$PROJECT_DIR$/eurekaserver/eurekaserver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/feignserver/feignserver.iml" filepath="$PROJECT_DIR$/feignserver/feignserver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/paper-approve/paper-approve.iml" filepath="$PROJECT_DIR$/paper-approve/paper-approve.iml" />
+      <module fileurl="file://$PROJECT_DIR$/paper-common/paper-common.iml" filepath="$PROJECT_DIR$/paper-common/paper-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/paper-train/paper-train.iml" filepath="$PROJECT_DIR$/paper-train/paper-train.iml" />
+      <module fileurl="file://$PROJECT_DIR$/paperserver/paperserver.iml" filepath="$PROJECT_DIR$/paperserver/paperserver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zuulserver/zuulserver.iml" filepath="$PROJECT_DIR$/zuulserver/zuulserver.iml" />
+    </modules>
+  </component>
+</project>

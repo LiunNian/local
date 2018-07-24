@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.registered.member.dao.MemberInformationMapper">
+  <resultMap id="BaseResultMap" type="com.registered.member.model.MemberInformation">
+    <id column="会员编码" jdbcType="VARCHAR" property="code" />
+    <result column="法人代表姓名" jdbcType="VARCHAR" property="legalName" />
+    <result column="法人电话" jdbcType="VARCHAR" property="legalPhone" />
+    <result column="联络人姓名" jdbcType="VARCHAR" property="contactName" />
+    <result column="联络人性别" jdbcType="VARCHAR" property="contactSex" />
+    <result column="联络人职务" jdbcType="VARCHAR" property="contactPostion" />
+    <result column="联络人手机" jdbcType="VARCHAR" property="contactPhone" />
+    <result column="联络人业务QQ" jdbcType="VARCHAR" property="contactQQ" />
+    <result column="单位名称" jdbcType="VARCHAR" property="unitName" />
+    <result column="成立时间" jdbcType="VARCHAR" property="unitCreateTime" />
+    <result column="员工人数" jdbcType="VARCHAR" property="unitNumber" />
+    <result column="所在地区" jdbcType="VARCHAR" property="unitRegion" />
+    <result column="详细地址" jdbcType="VARCHAR" property="uintAddress" />
+    <result column="单位网址" jdbcType="VARCHAR" property="unitUrl" />
+    <result column="邮编" jdbcType="VARCHAR" property="unitMall" />
+    <result column="传真" jdbcType="VARCHAR" property="unitFax" />
+    <result column="理事候选人" jdbcType="VARCHAR" property="unitCandidate" />
+    <result column="所在单位" jdbcType="VARCHAR" property="unitDepartment" />
+    <result column="职务" jdbcType="VARCHAR" property="unitPosition" />
+    <result column="手机号码" jdbcType="VARCHAR" property="unitPhone" />
+  </resultMap>
+  <select id="findOldMember" resultType="java.util.Map">
+    SELECT obj.`会员编码`,obj.`法人代表姓名`,obj.`法人电话`,obj.`联络人姓名`,obj.`联络人性别`,
+	obj.`联络人职务`,obj.`联络人手机`,obj.`联络人业务QQ`,obj.`单位名称`,obj.`成立日期`,
+	obj.`员工人数`,obj.`所在地区`,obj.`详细地址`,obj.`单位网址`,obj.`邮编`,obj.`传真`,obj.`理事候选人`,
+	obj.`所在单位`,obj.`职务`,obj.`手机号码`  FROM
+	danweihuiyuan obj where obj.`会员编码`=#{code,jdbcType=VARCHAR}
+  </select>
+
+  <select id="Cheakmember" resultType="java.util.Map">
+    select  obj.* from member_information obj where  obj.uid=#{id,jdbcType=VARCHAR}
+  </select>
+
+  <select id="findMess" resultType="java.lang.String">
+     select ""+obj.id from member_information obj
+   where obj.unitName=#{unitName,jdbcType=VARCHAR} and obj.legalName=#{legalName,jdbcType=VARCHAR}
+   and obj.contactName=#{contactName,jdbcType=VARCHAR}  and obj.contactPhone=#{contactPhone,jdbcType=VARCHAR}
+  </select>
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.registered.member.dao.MemberPaymentMapper">
+  <resultMap id="BaseResultMap" type="com.registered.member.model.PayInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="time" jdbcType="VARCHAR" property="time" />
+    <result column="paytime" jdbcType="VARCHAR" property="paytime" />
+    <result column="payname" jdbcType="VARCHAR" property="payname" />
+    <result column="payamount" jdbcType="VARCHAR" property="payamount" />
+    <result column="membercode" jdbcType="VARCHAR" property="membercode" />
+    <result column="unitname" jdbcType="VARCHAR" property="unitname" />
+    <result column="batch" jdbcType="INTEGER" property="batch" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+  </resultMap>
+
+  <select id="getInfo" parameterType="java.lang.String" resultMap="BaseResultMap">
+   select  obj.* from member_pay obj where obj.membercode=#{membercode,jdbcType=VARCHAR}
+  </select>
+
+
+
+</mapper>

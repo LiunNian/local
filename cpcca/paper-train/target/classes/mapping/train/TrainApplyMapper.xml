@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paper.member.dao.TrainApplyMapper">
+  <resultMap id="BaseResultMap" type="com.paper.train.model.TrainApply">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="mid" jdbcType="INTEGER" property="mid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="nation" jdbcType="VARCHAR" property="nation" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="birth" jdbcType="VARCHAR" property="birth" />
+    <result column="idcard" jdbcType="VARCHAR" property="idcard" />
+    <result column="duty" jdbcType="VARCHAR" property="duty" />
+    <result column="unitname" jdbcType="VARCHAR" property="unitname" />
+    <result column="unitaddress" jdbcType="VARCHAR" property="unitaddress" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="ismember" jdbcType="INTEGER" property="ismember" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="officephone" jdbcType="VARCHAR" property="officephone" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, uid, mid, name, nation, sex, province, city, birth, idcard, duty, unitname, unitaddress, 
+    price, ismember, phone, email, officephone, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from train_apply
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectCountByUIDandMID" resultType="java.lang.Integer">
+    select count(id)
+    from train_apply
+    where uid = #{uid,jdbcType=INTEGER} and mid = #{mid,jdbcType=INTEGER}
+  </select>
+  <select id="selectBymid" resultType="java.lang.Integer">
+    select count(id)
+    from train_apply
+    where mid = #{mid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from train_apply
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.paper.train.model.TrainApply">
+    insert into train_apply ( uid, mid,
+      name, nation, sex, 
+      province, city, birth, 
+      idcard, duty, unitname, 
+      unitaddress, price, ismember, 
+      phone, email, officephone, 
+      remark)
+    values ( #{uid,jdbcType=INTEGER}, #{mid,jdbcType=INTEGER},
+      #{name,jdbcType=VARCHAR}, #{nation,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{birth,jdbcType=VARCHAR}, 
+      #{idcard,jdbcType=VARCHAR}, #{duty,jdbcType=VARCHAR}, #{unitname,jdbcType=VARCHAR}, 
+      #{unitaddress,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE}, #{ismember,jdbcType=INTEGER}, 
+      #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{officephone,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.paper.train.model.TrainApply">
+    insert into train_apply
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="mid != null">
+        mid,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="nation != null">
+        nation,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="birth != null">
+        birth,
+      </if>
+      <if test="idcard != null">
+        idcard,
+      </if>
+      <if test="duty != null">
+        duty,
+      </if>
+      <if test="unitname != null">
+        unitname,
+      </if>
+      <if test="unitaddress != null">
+        unitaddress,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="ismember != null">
+        ismember,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="officephone != null">
+        officephone,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="mid != null">
+        #{mid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null">
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="birth != null">
+        #{birth,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="duty != null">
+        #{duty,jdbcType=VARCHAR},
+      </if>
+      <if test="unitname != null">
+        #{unitname,jdbcType=VARCHAR},
+      </if>
+      <if test="unitaddress != null">
+        #{unitaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="ismember != null">
+        #{ismember,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="officephone != null">
+        #{officephone,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.paper.train.model.TrainApply">
+    update train_apply
+    <set>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="mid != null">
+        mid = #{mid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null">
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="birth != null">
+        birth = #{birth,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        idcard = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="duty != null">
+        duty = #{duty,jdbcType=VARCHAR},
+      </if>
+      <if test="unitname != null">
+        unitname = #{unitname,jdbcType=VARCHAR},
+      </if>
+      <if test="unitaddress != null">
+        unitaddress = #{unitaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="ismember != null">
+        ismember = #{ismember,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="officephone != null">
+        officephone = #{officephone,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.paper.train.model.TrainApply">
+    update train_apply
+    set uid = #{uid,jdbcType=INTEGER},
+      mid = #{mid,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      nation = #{nation,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      birth = #{birth,jdbcType=VARCHAR},
+      idcard = #{idcard,jdbcType=VARCHAR},
+      duty = #{duty,jdbcType=VARCHAR},
+      unitname = #{unitname,jdbcType=VARCHAR},
+      unitaddress = #{unitaddress,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DOUBLE},
+      ismember = #{ismember,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      officephone = #{officephone,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

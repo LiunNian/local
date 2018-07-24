@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.org.cpcca.paperserver.mappers.ReviewPaperDao">
+    <resultMap id="BaseResultMap" type="cn.org.cpcca.paperserver.models.ReviewPaperBean">
+        <id column="revpid" property="revpid" jdbcType="INTEGER"/>
+        <result column="revid" property="revid" jdbcType="INTEGER"/>
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="did" property="did" jdbcType="INTEGER"/>
+        <result column="progress" property="progress" jdbcType="VARCHAR"/>
+        <result column="result" property="result" jdbcType="VARCHAR"/>
+        <result column="repeatword" property="repeatword" jdbcType="VARCHAR"/>
+        <result column="quoteword" property="quoteword" jdbcType="VARCHAR"/>
+        <result column="selfword" property="selfword" jdbcType="VARCHAR"/>
+        <result column="ctime" property="ctime" jdbcType="TIMESTAMP"/>
+        <result column="state" property="state" jdbcType="INTEGER"/>
+    </resultMap>
+    <resultMap id="ReviewPaperMap" type="cn.org.cpcca.paperserver.models.ReviewPaperModel">
+        <id column="revpid" property="revpid" jdbcType="INTEGER"/>
+        <result column="revid" property="revid" jdbcType="INTEGER"/>
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="item" property="item" jdbcType="INTEGER"/>
+        <result column="theme" property="theme" jdbcType="VARCHAR"/>
+        <result column="direction" property="direction" jdbcType="VARCHAR"/>
+        <result column="progress" property="progress" jdbcType="VARCHAR"/>
+        <result column="result" property="result" jdbcType="VARCHAR"/>
+        <result column="experts" property="experts" jdbcType="VARCHAR"/>
+        <result column="ctime" property="ctime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <resultMap id="ReviewPaperInfoMap" type="cn.org.cpcca.paperserver.models.ReviewPaperInfoModel">
+        <id column="pexid" property="pexid" jdbcType="INTEGER"/>
+        <result column="revpid" property="revpid" jdbcType="INTEGER"/>
+        <result column="revid" property="revid" jdbcType="INTEGER"/>
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="subtitle" property="subtitle" jdbcType="VARCHAR"/>
+        <result column="summary" property="summary" jdbcType="VARCHAR"/>
+        <result column="keyword" property="keyword" jdbcType="VARCHAR"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="reference" property="reference" jdbcType="VARCHAR"/>
+        <result column="filename" property="filename" jdbcType="VARCHAR"/>
+        <result column="uri" property="uri" jdbcType="VARCHAR"/>
+        <result column="authors" property="authors" jdbcType="VARCHAR"/>
+        <result column="item" property="item" jdbcType="VARCHAR"/>
+        <result column="theme" property="theme" jdbcType="VARCHAR"/>
+        <result column="direction" property="direction" jdbcType="VARCHAR"/>
+    </resultMap>
+    <resultMap id="ReviewPaperListMap" type="cn.org.cpcca.paperserver.models.ReviewPaperListModel">
+        <id column="revpid" property="revpid" jdbcType="INTEGER"/>
+        <result column="revid" property="revid" jdbcType="INTEGER"/>
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="title" property="title" jdbcType="INTEGER"/>
+        <result column="item" property="item" jdbcType="VARCHAR"/>
+        <result column="theme" property="theme" jdbcType="VARCHAR"/>
+        <result column="direction" property="direction" jdbcType="VARCHAR"/>
+        <result column="score" property="score" jdbcType="INTEGER"/>
+    </resultMap>
+    <resultMap id="ReviewProgressMap" type="cn.org.cpcca.paperserver.models.ReviewProgressModel">
+        <id column="revpid" property="revpid" jdbcType="INTEGER"/>
+        <result column="title" property="title" jdbcType="INTEGER"/>
+        <result column="item" property="item" jdbcType="VARCHAR"/>
+        <result column="theme" property="theme" jdbcType="VARCHAR"/>
+        <result column="direction" property="direction" jdbcType="VARCHAR"/>
+        <result column="reitem" property="reitem" jdbcType="VARCHAR"/>
+        <result column="progress" property="progress" jdbcType="VARCHAR"/>
+        <result column="result" property="result" jdbcType="VARCHAR"/>
+        <result column="authors" property="authors" jdbcType="VARCHAR"/>
+        <result column="unitname" property="unitname" jdbcType="VARCHAR"/>
+        <result column="filename" property="filename" jdbcType="VARCHAR"/>
+        <result column="repeatword" property="repeatword" jdbcType="VARCHAR"/>
+        <result column="quoteword" property="quoteword" jdbcType="VARCHAR"/>
+        <result column="selfword" property="selfword" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap id="ReviewPaperListByUidMap" type="cn.org.cpcca.paperserver.models.ReviewPaperBean">
+    <id column="revpid" property="revpid" jdbcType="INTEGER"/>
+    <result column="revid" property="revid" jdbcType="INTEGER"/>
+    </resultMap>
+
+	<sql id="Base_Column_List">
+		revpid,revid,id,progress,result,ctime,state
+	</sql>
+	<insert id="insertRecord" parameterType="cn.org.cpcca.paperserver.models.ReviewPaperBean">
+		insert into review_paper(revpid,
+            revid,
+            did,
+			id,
+			progress,
+			result,
+            repeatword,
+            quoteword,
+            selfword,
+			ctime,
+			state)
+		values (#{revpid,jdbcType=INTEGER},
+            #{revid,jdbcType=INTEGER},
+            #{did,jdbcType=INTEGER},
+			#{id,jdbcType=INTEGER},
+			#{progress,jdbcType=VARCHAR},
+			#{result,jdbcType=VARCHAR},
+            #{repeatword,jdbcType=INTEGER},
+            #{quoteword,jdbcType=INTEGER},
+            #{selfword,jdbcType=INTEGER},
+			#{ctime,jdbcType=TIMESTAMP},
+			#{state,jdbcType=INTEGER})
+
+
+ </insert>
+	<insert id="insertSelective" parameterType="cn.org.cpcca.paperserver.models.ReviewPaperBean">
+		insert into review_paper
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="revpid != null" >
+				revpid,
+			</if>
+            <if test="revid != null" >
+                revid,
+            </if>
+            <if test="did != null" >
+                did,
+            </if>
+			<if test="id != null" >
+				id,
+			</if>
+			<if test="progress != null" >
+				progress,
+			</if>
+            <if test="result != null" >
+                result,
+            </if>
+            <if test="repeatword != null" >
+                repeatword,
+            </if>
+            <if test="quoteword != null" >
+                quoteword,
+            </if>
+            <if test="selfword != null" >
+                selfword,
+            </if>
+			<if test="ctime != null" >
+				ctime,
+			</if>
+			<if test="state != null" >
+				state,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="revpid != null" >
+				#{revpid,jdbcType=INTEGER},
+			</if>
+            <if test="revid != null" >
+                #{revid,jdbcType=INTEGER},
+            </if>
+            <if test="revid != null" >
+                #{did,jdbcType=INTEGER},
+            </if>
+			<if test="id != null" >
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="progress != null" >
+				#{progress,jdbcType=VARCHAR},
+			</if>
+			<if test="result != null" >
+				#{result,jdbcType=VARCHAR},
+			</if>
+            <if test="repeatword != null" >
+                #{repeatword,jdbcType=VARCHAR},
+            </if>
+            <if test="quoteword != null" >
+                #{quoteword,jdbcType=VARCHAR},
+            </if>
+            <if test="selfword != null" >
+                #{selfword,jdbcType=VARCHAR},
+            </if>
+			<if test="ctime != null" >
+				#{ctime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="state != null" >
+				#{state,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete from review_paper where revpid= #{revpid,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByRevId" parameterType="java.lang.Integer">
+        delete from review_paper where revid= #{revid,jdbcType=INTEGER}
+    </delete>
+	<update id="updateByIdSelective" parameterType="cn.org.cpcca.paperserver.models.ReviewPaperBean">
+		update review_paper
+		<set>
+			<if test="revid != null" >
+				revid=#{revid,jdbcType=INTEGER},
+			</if>
+			<if test="id != null" >
+				id=#{id,jdbcType=INTEGER},
+			</if>
+			<if test="progress != null" >
+				progress=#{progress,jdbcType=VARCHAR},
+			</if>
+			<if test="result != null" >
+				result=#{result,jdbcType=VARCHAR},
+			</if>
+            <if test="repeatword != null" >
+                repeatword=#{repeatword,jdbcType=VARCHAR},
+            </if>
+            <if test="quoteword != null" >
+                quoteword=#{quoteword,jdbcType=VARCHAR},
+            </if>
+            <if test="selfword != null" >
+                selfword=#{selfword,jdbcType=VARCHAR},
+            </if>
+			<if test="ctime != null" >
+				ctime=#{ctime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="state != null" >
+				state=#{state,jdbcType=INTEGER},
+			</if>
+		</set>
+		where revpid= #{revpid,jdbcType=INTEGER}
+	</update>
+	<update id="updateById" parameterType="cn.org.cpcca.paperserver.models.ReviewPaperBean">
+		update review_paper set
+			revid=#{revid,jdbcType=INTEGER},
+			id=#{id,jdbcType=INTEGER},
+			progress=#{progress,jdbcType=VARCHAR},
+			result=#{result,jdbcType=VARCHAR},
+            repeatword=#{repeatword,jdbcType=VARCHAR},
+            quoteword=#{quoteword,jdbcType=VARCHAR},
+            selfword=#{selfword,jdbcType=VARCHAR},
+			ctime=#{ctime,jdbcType=TIMESTAMP},
+			state=#{state,jdbcType=INTEGER}
+		where revpid= #{revpid,jdbcType=INTEGER}
+	</update>
+	<select id="countRecord" resultType="java.lang.Integer">
+		select count(*) from review_paper
+	</select>
+	<select id="countSelective" parameterType="cn.org.cpcca.paperserver.models.ReviewPaperBean" resultType="java.lang.Integer">
+		select count(*) from review_paper where 1=1
+		<if test="revpid != null" >
+			and revpid=#{revpid,jdbcType=INTEGER}
+		</if>
+		<if test="revid != null" >
+			and revid=#{revid,jdbcType=INTEGER}
+		</if>
+		<if test="id != null" >
+			and id=#{id,jdbcType=INTEGER}
+		</if>
+		<if test="progress != null" >
+			and progress=#{progress,jdbcType=VARCHAR}
+		</if>
+        <if test="result != null" >
+            and result=#{result,jdbcType=VARCHAR}
+        </if>
+        <if test="repeatword != null" >
+            and repeatword=#{repeatword,jdbcType=VARCHAR}
+        </if>
+        <if test="quoteword != null" >
+            and quoteword=#{quoteword,jdbcType=VARCHAR}
+        </if>
+        <if test="selfword != null" >
+            and selfword=#{selfword,jdbcType=VARCHAR}
+        </if>
+		<if test="ctime != null" >
+			and ctime=#{ctime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="state != null" >
+			and state=#{state,jdbcType=INTEGER}
+		</if>
+	</select>
+	<select id="maxId" resultType="java.lang.Integer">
+		select max(revpid) from review_paper
+	</select>
+	<select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List"/>
+		from review_paper
+		where revpid= #{revpid,jdbcType=INTEGER}
+	</select>
+	<select id="selectAll" resultMap="BaseResultMap">
+		select * from review_paper
+	</select>
+
+	<select id="searchPapersByRevid" resultMap="ReviewPaperMap">
+		SELECT
+		a.revpid,a.revid,a.id,b.title,e.title as item,d.title as theme,c.title as direction,a.progress,a.result,a.did,a.ctime
+		FROM `review_paper` as a
+		join papers as b on a.id=b.id
+		join directions as c on c.id=b.did
+		join themes as d on c.thid=d.id
+		join items as e on d.itid=e.id
+		where a.revid = #{revid}
+	</select>
+
+	<select id="searchPapersByDirection" parameterType="java.util.Map" resultMap="ReviewPaperMap">
+        select t.* ,GROUP_CONCAT(g.username) as experts from (SELECT a.revpid,a.revid,a.id,b.title,e.title as item,d.title as theme,c.title as direction,a.progress,a.result,a.did,a.ctime
+        FROM `review_paper` as a
+        join papers as b on a.id=b.id
+        join directions as c on c.id=b.did
+        join themes as d on c.thid=d.id
+        join items as e on d.itid=e.id
+        where a.revid=#{revid} and a.did in
+        <foreach collection="ids" index="index" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+        ) t
+        left join review_paper_expert as f on f.revpid=t.revpid
+        left join users as g on g.id=f.uid group by t.revpid
+	</select>
+
+	<select id="searchPapersByKeyword" parameterType="java.util.Map"  resultMap="ReviewPaperMap">
+       select
+        k.revpid,k.revid,k.id,k.title,k.item,k.theme,k.direction,k.progress,k.result,k.did,k.ctime
+        from (select t.* ,GROUP_CONCAT(g.username) as experts from (
+        <if test="revid>0" >
+            SELECT a.revpid,a.revid,a.id,b.title,e.title as item,d.title as theme,c.title as direction,a.progress,a.result,a.did,a.ctime
+            FROM `review_paper` as a
+            join papers as b on a.id=b.id
+        </if>
+        <if test="revid==0">
+            SELECT 0 as revpid,0 as revid,b.id,b.title,e.title as item,d.title as theme,c.title as direction,"" as progress,"" as result,b.did,b.ctime,b.uid
+            FROM `papers` as b
+        </if>
+        join directions as c on c.id=b.did
+        <if test="did != null" >
+            and b.did=#{did,jdbcType=VARCHAR}
+        </if>
+        join themes as d on c.thid=d.id
+        <if test="thid != null" >
+            and c.thid=#{thid,jdbcType=VARCHAR}
+        </if>
+        join items as e on d.itid=e.id
+        <if test="revid>0" >
+            where a.revid=#{revid}
+        </if>
+        ) t
+        <if test="revid>0">
+            left join review_paper_expert as f on f.revpid=t.revpid
+            left join users as g on g.id=f.uid group by t.revpid
+        </if>
+        <if test="revid==0">
+            left join users as g on g.id=t.uid group by t.id
+        </if>
+
+        ) k
+        where 1=1
+        <if test="keyword != null" >
+            and (title like '%${keyword}%'
+            <if test="revid>0" >
+                or experts like '%${keyword}%'
+            </if>
+            )
+        </if>
+        <if test="progress != null" >
+            and progress like '%${progress}%'
+        </if>
+        <if test="result != null" >
+            and result like '%${result}%'
+        </if>
+    </select>
+    <select id="getReviewPapersAll" parameterType="java.util.Map"  resultMap="ReviewPaperInfoMap">
+    select * from (select revpid,revid,t.id,
+    title,subtitle,summary,keyword,content,reference,
+    direction,theme,item,f.name as filename,f.uri,group_concat(g.name) as authors from (SELECT a.revpid,a.revid,a.id,
+    b.fid,b.prove,b.auids,b.title,b.subtitle,b.summary,b.keyword,b.content,b.reference,
+    c.title as direction,d.title as theme,e.title as item
+    FROM `review_paper` as a
+    join papers as b on a.id=b.id and b.state=1
+    join directions as c on b.did=c.id
+    <if test="did != null" >
+        and d.id=#{did}
+    </if>
+    join themes as d on c.thid=d.id
+    <if test="thid != null" >
+        and d.id=#{thid}
+    </if>
+    join items as e on d.itid=e.id
+    <if test="itid != null" >
+        and e.id=#{itid}
+    </if>
+    ) t
+        left join files as f on f.id = t.fid
+        left join authors as g on FIND_IN_SET(g.id,t.auids) group by revpid
+    )k
+    where 1=1
+    <if test="revid != null" >
+      and revid=#{revid}
+    </if>
+    <if test="revpid != null" >
+        and revpid = #{revpid}
+    </if>
+    </select>
+    <select id="getReviewPapersList" parameterType="java.util.Map"  resultMap="ReviewPaperListMap">
+        select * from (select t.revpid,revid,t.id,
+        title,subtitle,
+        direction,theme,item,
+        (case when f.score is null then -1 else f.score end) as score,
+        (case when f.score>-1 then "已评审" else "未评审" end) as mark
+        from (SELECT a.revpid,a.revid,a.id,
+        b.fid,b.prove,b.auids,b.title,b.subtitle,
+        c.title as direction,d.title as theme,e.title as item
+        FROM `review_paper` as a
+        join papers as b on a.id=b.id and b.state=1
+        join directions as c on b.did=c.id
+        <if test="did != null" >
+            and d.id=#{did}
+        </if>
+        join themes as d on c.thid=d.id
+        <if test="thid != null" >
+            and d.id=#{thid}
+        </if>
+        join items as e on d.itid=e.id
+        <if test="itid != null" >
+            and e.id=#{itid}
+        </if>
+        ) t
+            join review_paper_expert as f on f.revpid = t.revpid and f.uid =#{uid}
+        )k
+        where 1=1
+        <if test="revid != null" >
+            and revid=#{revid}
+        </if>
+        <if test="keyword != null" >
+            and title like '%${keyword}%'
+        </if>
+        <if test="revpids != null" >
+            and revpid in
+            <foreach collection="revpids" index="index" item="id" open="(" separator="," close=")">
+                #{id}
+            </foreach>
+        </if>
+    </select>
+    <select id="getReviewPapersListByUid" parameterType="java.lang.Integer"  resultMap="ReviewPaperListByUidMap">
+        select c.revpid,a.revid
+        from review_item a
+        join (
+        select itid,max(ctime) as ctime
+        from review_item
+        group by itid) b
+        on a.itid=b.itid and a.ctime=b.ctime and a.state = 1
+        join review_paper c on c.revid = a.revid
+        join review_paper_expert d on d.revpid=c.revpid and d.uid = #{uid}
+    </select>
+    <select id="countReview" parameterType="java.lang.Integer">
+        select count(revid) from (select d.uid,a.revid
+        from review_item a
+        join (
+        select itid,max(ctime) as ctime
+        from review_item
+        group by itid) b
+        on a.itid=b.itid and a.ctime=b.ctime and a.state = 1
+        join review_paper c on c.revid = a.revid
+        join review_paper_expert d on d.revpid=c.revpid and
+        d.uid = #{uid}
+        group by a.revid) t group by uid
+    </select>
+    <select id="getItidsByUid" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        select itid from (select d.uid,a.revid,a.itid
+        from review_item a
+        join (
+        select itid,max(ctime) as ctime
+        from review_item
+        group by itid) b
+        on a.itid=b.itid and a.ctime=b.ctime and a.state = 1
+        join review_paper c on c.revid = a.revid
+        join review_paper_expert d on d.revpid=c.revpid and
+        d.uid = #{uid}
+        group by a.revid) t group by itid
+    </select>
+    <select id="reviewProgress" parameterType="java.lang.Integer" resultMap="ReviewProgressMap">
+        select b.revpid,g.title as item,f.title as theme,e.title as direction,
+        a.title as reitem,d.title,b.progress,b.result,b.repeatword,b.quoteword,b.selfword,group_concat(h.name) as authors,
+        j.username as unitname,k.name as filename
+        from review_item AS a
+        join review_paper as b on a.revid = b.revid and a.revid = #{revid}
+        join papers as d on d.id = b.id
+        join directions as e on e.id = d.did
+        join themes as f on f.id = e.thid
+        join items as g on g.id = f.itid
+        join users as j on j.id = d.uid
+        join files as k on k.id = d.fid
+        left join authors as h on FIND_IN_SET(h.id,d.auids) group by b.revpid
+    </select>
+
+    <select id="groupByProgress" parameterType="java.lang.Integer" resultType="java.lang.String">
+        select progress from review_paper where progress is not null and revid  = #{revid} group by progress;
+    </select>
+    <select id="groupByResult" parameterType="java.lang.Integer" resultType="java.lang.String">
+        select result from review_paper where result is not null and revid  = #{revid} group by result;
+    </select>
+</mapper>

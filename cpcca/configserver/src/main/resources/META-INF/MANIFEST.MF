@@ -1,0 +1,56 @@
+Manifest-Version: 1.0
+Class-Path: lib/spring-webmvc-4.3.18.RELEASE.jar lib/jackson-annotatio
+ ns-2.8.0.jar lib/aopalliance-1.0.jar lib/org.eclipse.jgit-3.6.1.20150
+ 1031845-r.jar lib/spring-boot-1.5.15.BUILD-SNAPSHOT.jar lib/ribbon-tr
+ ansport-2.2.4.jar lib/eureka-client-1.7.0.jar lib/jboss-logging-3.3.2
+ .Final.jar lib/spring-cloud-context-1.3.2.RELEASE.jar lib/jettison-1.
+ 3.7.jar lib/spring-cloud-starter-netflix-eureka-client-1.4.3.RELEASE.
+ jar lib/netty-buffer-4.0.27.Final.jar lib/tomcat-embed-core-8.5.32.ja
+ r lib/spring-cloud-netflix-eureka-client-1.4.3.RELEASE.jar lib/slf4j-
+ api-1.7.25.jar lib/xpp3_min-1.1.4c.jar lib/netty-handler-4.0.27.Final
+ .jar lib/spring-boot-autoconfigure-1.5.15.BUILD-SNAPSHOT.jar lib/netf
+ lix-statistics-0.1.1.jar lib/commons-math-2.2.jar lib/tomcat-embed-el
+ -8.5.32.jar lib/stax-api-1.0.1.jar lib/spring-boot-starter-actuator-1
+ .5.15.BUILD-SNAPSHOT.jar lib/jul-to-slf4j-1.7.25.jar lib/netty-codec-
+ 4.0.27.Final.jar lib/commons-collections-3.2.2.jar lib/spring-securit
+ y-rsa-1.0.3.RELEASE.jar lib/spring-context-4.3.18.RELEASE.jar lib/sta
+ x-api-1.0-2.jar lib/logback-classic-1.1.11.jar lib/stringtemplate-3.2
+ .1.jar lib/netflix-infix-0.3.0.jar lib/netty-transport-4.0.27.Final.j
+ ar lib/spring-cloud-starter-netflix-archaius-1.4.3.RELEASE.jar lib/hi
+ bernate-validator-5.3.6.Final.jar lib/xstream-1.4.9.jar lib/jersey-co
+ re-1.19.1.jar lib/netty-transport-native-epoll-4.0.27.Final.jar lib/s
+ pring-expression-4.3.18.RELEASE.jar lib/spring-boot-starter-logging-1
+ .5.15.BUILD-SNAPSHOT.jar lib/httpclient-4.5.5.jar lib/servo-internal-
+ 0.10.1.jar lib/gson-2.8.5.jar lib/guava-18.0.jar lib/woodstox-core-as
+ l-4.4.1.jar lib/jsch-0.1.54.jar lib/snakeyaml-1.17.jar lib/spring-boo
+ t-starter-1.5.15.BUILD-SNAPSHOT.jar lib/HdrHistogram-2.1.9.jar lib/ri
+ bbon-core-2.2.4.jar lib/jersey-apache-client4-1.19.1.jar lib/validati
+ on-api-1.1.0.Final.jar lib/spring-web-4.3.18.RELEASE.jar lib/spring-b
+ oot-starter-web-1.5.15.BUILD-SNAPSHOT.jar lib/netty-common-4.0.27.Fin
+ al.jar lib/spring-beans-4.3.18.RELEASE.jar lib/commons-lang-2.6.jar l
+ ib/netflix-eventbus-0.3.0.jar lib/spring-core-4.3.18.RELEASE.jar lib/
+ spring-cloud-commons-1.3.2.RELEASE.jar lib/commons-configuration-1.8.
+ jar lib/spring-boot-actuator-1.5.15.BUILD-SNAPSHOT.jar lib/hystrix-co
+ re-1.5.12.jar lib/spring-cloud-config-client-1.4.2.RELEASE.jar lib/bc
+ prov-jdk15on-1.55.jar lib/stax2-api-3.1.4.jar lib/guice-4.1.0.jar lib
+ /log4j-over-slf4j-1.7.25.jar lib/classmate-1.3.4.jar lib/netflix-comm
+ ons-util-0.1.1.jar lib/jsr311-api-1.1.1.jar lib/jackson-core-2.8.11.j
+ ar lib/netty-codec-http-4.0.27.Final.jar lib/ribbon-eureka-2.2.4.jar 
+ lib/spring-cloud-starter-1.3.2.RELEASE.jar lib/tomcat-annotations-api
+ -8.5.32.jar lib/spring-aop-4.3.18.RELEASE.jar lib/antlr-2.7.7.jar lib
+ /spring-cloud-netflix-core-1.4.3.RELEASE.jar lib/spring-cloud-config-
+ server-1.4.2.RELEASE.jar lib/rxnetty-contexts-0.4.9.jar lib/spring-se
+ curity-crypto-4.2.7.RELEASE.jar lib/ribbon-2.2.4.jar lib/spring-cloud
+ -starter-netflix-ribbon-1.4.3.RELEASE.jar lib/ribbon-loadbalancer-2.2
+ .4.jar lib/joda-time-2.9.9.jar lib/ribbon-httpclient-2.2.4.jar lib/ja
+ vax.inject-1.jar lib/servo-core-0.10.1.jar lib/commons-codec-1.10.jar
+  lib/jackson-databind-2.8.11.2.jar lib/tomcat-embed-websocket-8.5.32.
+ jar lib/spring-cloud-starter-eureka-1.4.5.RELEASE.jar lib/bcpkix-jdk1
+ 5on-1.55.jar lib/JavaEWAH-0.7.9.jar lib/httpcore-4.4.10.jar lib/rxnet
+ ty-servo-0.4.9.jar lib/eureka-core-1.7.0.jar lib/jcl-over-slf4j-1.7.2
+ 5.jar lib/xmlpull-1.1.3.1.jar lib/commons-jxpath-1.3.jar lib/jersey-c
+ lient-1.19.1.jar lib/rxnetty-0.4.9.jar lib/logback-core-1.1.11.jar li
+ b/spring-boot-starter-tomcat-1.5.15.BUILD-SNAPSHOT.jar lib/rxjava-1.2
+ .0.jar lib/antlr-runtime-3.4.jar lib/archaius-core-0.7.4.jar
+Main-Class: cn.org.cpcca.configserver.ConfigserverApplication
+

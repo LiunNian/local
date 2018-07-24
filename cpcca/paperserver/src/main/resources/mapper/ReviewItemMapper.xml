@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.org.cpcca.paperserver.mappers.ReviewItemDao">
+	<resultMap id="BaseResultMap" type="cn.org.cpcca.paperserver.models.ReviewItemBean">
+		<id column="revid" property="revid" jdbcType="INTEGER"/>
+		<result column="itid" property="itid" jdbcType="INTEGER"/>
+		<result column="title" property="title" jdbcType="VARCHAR"/>
+		<result column="ctime" property="ctime" jdbcType="TIMESTAMP"/>
+		<result column="state" property="state" jdbcType="INTEGER"/>
+	</resultMap>
+	<sql id="Base_Column_List">
+		revid,itid,title,ctime,state
+	</sql>
+	<insert id="insertRecord" parameterType="cn.org.cpcca.paperserver.models.ReviewItemBean">
+		insert into review_item(revid,
+			itid,
+			title,
+			ctime,
+			state)
+		values (#{revid,jdbcType=INTEGER},
+			#{itid,jdbcType=INTEGER},
+			#{title,jdbcType=VARCHAR},
+			#{ctime,jdbcType=TIMESTAMP},
+			#{state,jdbcType=INTEGER})
+ </insert>
+	<insert id="insertSelective" keyProperty="revid" useGeneratedKeys="true" parameterType="cn.org.cpcca.paperserver.models.ReviewItemBean">
+		insert into review_item
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="revid != null" >
+				revid,
+			</if>
+			<if test="itid != null" >
+				itid,
+			</if>
+			<if test="title != null" >
+				title,
+			</if>
+			<if test="ctime != null" >
+				ctime,
+			</if>
+			<if test="state != null" >
+				state,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="revid != null" >
+				#{revid,jdbcType=INTEGER},
+			</if>
+			<if test="itid != null" >
+				#{itid,jdbcType=INTEGER},
+			</if>
+			<if test="title != null" >
+				#{title,jdbcType=VARCHAR},
+			</if>
+			<if test="ctime != null" >
+				#{ctime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="state != null" >
+				#{state,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<delete id="deleteById" parameterType="java.lang.Integer">
+		delete from review_item where revid= #{revid,jdbcType=INTEGER}
+	</delete>
+	<update id="updateByIdSelective" parameterType="cn.org.cpcca.paperserver.models.ReviewItemBean">
+		update review_item
+		<set>
+			<if test="itid != null" >
+				itid=#{itid,jdbcType=INTEGER},
+			</if>
+			<if test="title != null" >
+				title=#{title,jdbcType=VARCHAR},
+			</if>
+			<if test="ctime != null" >
+				ctime=#{ctime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="state != null" >
+				state=#{state,jdbcType=INTEGER},
+			</if>
+		</set>
+		where revid= #{revid,jdbcType=INTEGER}
+	</update>
+	<update id="updateById" parameterType="cn.org.cpcca.paperserver.models.ReviewItemBean">
+		update review_item set
+			itid=#{itid,jdbcType=INTEGER},
+			title=#{title,jdbcType=VARCHAR},
+			ctime=#{ctime,jdbcType=TIMESTAMP},
+			state=#{state,jdbcType=INTEGER}
+		where revid= #{revid,jdbcType=INTEGER}
+	</update>
+	<select id="countRecord" resultType="java.lang.Integer">
+		select count(*) from review_item
+	</select>
+	<select id="countSelective" parameterType="cn.org.cpcca.paperserver.models.ReviewItemBean" resultType="java.lang.Integer">
+		select count(*) from review_item where 1=1
+		<if test="revid != null" >
+			and revid=#{revid,jdbcType=INTEGER}
+		</if>
+		<if test="itid != null" >
+			and itid=#{itid,jdbcType=INTEGER}
+		</if>
+		<if test="title != null" >
+			and title=#{title,jdbcType=VARCHAR}
+		</if>
+		<if test="ctime != null" >
+			and ctime=#{ctime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="state != null" >
+			and state=#{state,jdbcType=INTEGER}
+		</if>
+	</select>
+	<select id="maxId" resultType="java.lang.Integer">
+		select max(revid) from review_item
+	</select>
+	<select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List"/>
+		from review_item
+		where revid= #{revid,jdbcType=INTEGER}
+	</select>
+
+	<select id="selectByItid" resultMap="BaseResultMap">
+		select * from review_item where itid=#{itid}
+	</select>
+
+	<select id="selectAll" resultMap="BaseResultMap">
+		select * from review_item
+	</select>
+</mapper>

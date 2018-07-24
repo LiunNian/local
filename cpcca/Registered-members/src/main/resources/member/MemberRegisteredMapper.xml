@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.registered.member.dao.MemberRegisteredMapper">
+  <resultMap id="BaseResultMap" type="com.registered.member.model.MemberInformation">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="legalName" jdbcType="VARCHAR" property="legalName" />
+    <result column="legalSex" jdbcType="VARCHAR" property="legalSex" />
+    <result column="legalPosition" jdbcType="VARCHAR" property="legalPosition" />
+    <result column="legalNational" jdbcType="VARCHAR" property="legalNational" />
+    <result column="legalPhone" jdbcType="VARCHAR" property="legalPhone" />
+    <result column="contactName" jdbcType="VARCHAR" property="contactName" />
+    <result column="contactSex" jdbcType="VARCHAR" property="contactSex" />
+    <result column="contactPostion" jdbcType="VARCHAR" property="contactPostion" />
+    <result column="contactNational" jdbcType="VARCHAR" property="contactNational" />
+    <result column="contactPhone" jdbcType="VARCHAR" property="contactPhone" />
+    <result column="contactEmall" jdbcType="VARCHAR" property="contactEmall" />
+    <result column="contactQQ" jdbcType="VARCHAR" property="contactQQ" />
+    <result column="attachmentCode" jdbcType="VARCHAR" property="attachmentCode" />
+    <result column="attachmentAddress" jdbcType="VARCHAR" property="attachmentAddress" />
+    <result column="unitName" jdbcType="VARCHAR" property="unitName" />
+    <result column="unitCreateTime" jdbcType="TIMESTAMP" property="unitCreateTime" />
+    <result column="unitNumber" jdbcType="INTEGER" property="unitNumber" />
+    <result column="unitRegion" jdbcType="VARCHAR" property="unitRegion" />
+    <result column="uintAddress" jdbcType="VARCHAR" property="uintAddress" />
+    <result column="unitUrl" jdbcType="VARCHAR" property="unitUrl" />
+    <result column="unitMall" jdbcType="VARCHAR" property="unitMall" />
+    <result column="unitFax" jdbcType="VARCHAR" property="unitFax" />
+    <result column="unitDescribe" jdbcType="VARCHAR" property="unitDescribe" />
+    <result column="unitType" jdbcType="INTEGER" property="unitType" />
+    <result column="unitCandidate" jdbcType="VARCHAR" property="unitCandidate" />
+    <result column="unitDepartment" jdbcType="VARCHAR" property="unitDepartment" />
+    <result column="unitPosition" jdbcType="VARCHAR" property="unitPosition" />
+    <result column="unitPhone" jdbcType="VARCHAR" property="unitPhone" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="uid" jdbcType="VARCHAR" property="uid" />
+    <result column="ctime" jdbcType="TIMESTAMP" property="ctime" />
+  </resultMap>
+
+  <select id="memberType" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select ID
+    from member_type
+    where TYPE_NAME = #{name,jdbcType=VARCHAR}
+  </select>
+
+  <select id="getMemberType" parameterType="java.lang.String" resultType="java.lang.String" >
+   select COALESCE(obj.type,"empty")  from train_memberunit obj where obj.name= #{name,jdbcType=VARCHAR}
+  </select>
+
+  <insert id="memberRegistered" parameterType="com.registered.member.model.MemberInformation" >
+    insert into member_information
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="code != null">
+        code,
+      </if>
+      <if test="legalName != null">
+        legalName,
+      </if>
+      <if test="legalSex != null">
+        legalSex,
+      </if>
+      <if test="legalPosition != null">
+        legalPosition,
+      </if>
+      <if test="legalNational != null">
+        legalNational,
+      </if>
+      <if test="legalPhone != null">
+        legalPhone,
+      </if>
+      <if test="contactName != null">
+        contactName,
+      </if>
+      <if test="contactSex != null">
+        contactSex,
+      </if>
+      <if test="contactPostion != null">
+        contactPostion,
+      </if>
+      <if test="contactNational != null">
+        contactNational,
+      </if>
+      <if test="contactPhone != null">
+        contactPhone,
+      </if>
+      <if test="contactEmall != null">
+        contactEmall,
+      </if>
+      <if test="contactQQ != null">
+        contactQQ,
+      </if>
+      <if test="attachmentCode != null">
+        attachmentCode,
+      </if>
+      <if test="attachmentAddress != null">
+        attachmentAddress,
+      </if>
+      <if test="unitName != null">
+        unitName,
+      </if>
+      <if test="unitCreateTime != null">
+        unitCreateTime,
+      </if>
+      <if test="unitNumber != null">
+        unitNumber,
+      </if>
+      <if test="unitRegion != null">
+        unitRegion,
+      </if>
+      <if test="uintAddress != null">
+        uintAddress,
+      </if>
+      <if test="unitUrl != null">
+        unitUrl,
+      </if>
+      <if test="unitMall != null">
+        unitMall,
+      </if>
+      <if test="unitFax != null">
+        unitFax,
+      </if>
+      <if test="unitDescribe != null">
+        unitDescribe,
+      </if>
+      <if test="unitType != null">
+        unitType,
+      </if>
+      <if test="unitCandidate != null">
+        unitCandidate,
+      </if>
+      <if test="unitDepartment != null">
+        unitDepartment,
+      </if>
+      <if test="unitPosition != null">
+        unitPosition,
+      </if>
+      <if test="unitPhone != null">
+        unitPhone,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="ctime != null">
+        ctime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <!--<if test="id != null">-->
+        <!--#{id,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="legalName != null">
+        #{legalName,jdbcType=VARCHAR},
+      </if>
+      <if test="legalSex != null">
+        #{legalSex,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPosition != null">
+        #{legalPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="legalNational != null">
+        #{legalNational,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPhone != null">
+        #{legalPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null">
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactSex != null">
+        #{contactSex,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPostion != null">
+        #{contactPostion,jdbcType=VARCHAR},
+      </if>
+      <if test="contactNational != null">
+        #{contactNational,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactEmall != null">
+        #{contactEmall,jdbcType=VARCHAR},
+      </if>
+      <if test="contactQQ != null">
+        #{contactQQ,jdbcType=VARCHAR},
+      </if>
+      <if test="attachmentCode != null">
+        #{attachmentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="attachmentAddress != null">
+        #{attachmentAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="unitName != null">
+        #{unitName,jdbcType=VARCHAR},
+      </if>
+      <if test="unitCreateTime != null">
+        #{unitCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="unitNumber != null">
+        #{unitNumber,jdbcType=INTEGER},
+      </if>
+      <if test="unitRegion != null">
+        #{unitRegion,jdbcType=VARCHAR},
+      </if>
+      <if test="uintAddress != null">
+        #{uintAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="unitUrl != null">
+        #{unitUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="unitMall != null">
+        #{unitMall,jdbcType=VARCHAR},
+      </if>
+      <if test="unitFax != null">
+        #{unitFax,jdbcType=VARCHAR},
+      </if>
+      <if test="unitDescribe != null">
+        #{unitDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="unitType != null">
+        #{unitType,jdbcType=INTEGER},
+      </if>
+      <if test="unitCandidate != null">
+        #{unitCandidate,jdbcType=VARCHAR},
+      </if>
+      <if test="unitDepartment != null">
+        #{unitDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="unitPosition != null">
+        #{unitPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="unitPhone != null">
+        #{unitPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="ctime != null">
+        #{ctime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="selectCountByPhone" resultType="java.lang.Integer">
+    select count(id)
+    from member_information
+    where contactPhone =  #{contactPhone,jdbcType=VARCHAR}
+  </select>
+
+
+  <select id="selectInfo" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select  obj.* from member_information obj where  obj.id=#{id,jdbcType=INTEGER}
+  </select>
+
+
+  <update id="updateMember" parameterType="com.registered.member.model.MemberInformation">
+    update member_information
+    <set>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="legalName != null">
+        legalName = #{legalName,jdbcType=VARCHAR},
+      </if>
+      <if test="legalSex != null">
+        legalSex = #{legalSex,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPosition != null">
+        legalPosition = #{legalPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPhone != null">
+        legalPhone = #{legalPhone,jdbcType=VARCHAR},
+    </if>
+      <if test="contactName != null">
+        contactName = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactSex != null">
+        contactSex = #{contactSex,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPostion != null">
+        contactPostion = #{contactPostion,jdbcType=VARCHAR},
+      </if>
+      <if test="contactNational != null">
+        contactNational = #{contactNational,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        contactPhone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactEmall != null">
+        contactEmall = #{contactEmall,jdbcType=VARCHAR},
+      </if>
+      <if test="contactQQ != null">
+        contactQQ = #{contactQQ,jdbcType=VARCHAR},
+      </if>
+      <if test="attachmentCode != null">
+        attachmentCode = #{attachmentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="attachmentAddress != null">
+        attachmentAddress = #{attachmentAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="unitName != null">
+        unitName = #{unitName,jdbcType=VARCHAR},
+      </if>
+      <if test="unitCreateTime != null">
+        unitCreateTime = #{unitCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="unitNumber != null">
+        unitNumber = #{unitNumber,jdbcType=INTEGER},
+      </if>
+      <if test="unitRegion != null">
+        unitRegion = #{unitRegion,jdbcType=VARCHAR},
+      </if>
+
+      <if test="uintAddress != null">
+        uintAddress = #{uintAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="unitUrl != null">
+        unitUrl = #{unitUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="unitMall != null">
+        unitMall = #{unitMall,jdbcType=VARCHAR},
+      </if>
+      <if test="unitFax != null">
+        unitFax = #{unitFax,jdbcType=VARCHAR},
+      </if>
+      <if test="unitDescribe != null">
+        unitDescribe = #{unitDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="unitType != null">
+        unitType = #{unitType,jdbcType=INTEGER},
+      </if>
+      <if test="unitCandidate != null">
+        unitCandidate = #{unitCandidate,jdbcType=VARCHAR},
+      </if>
+      <if test="unitDepartment != null">
+        unitDepartment = #{unitDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="unitPosition != null">
+        unitPosition = #{unitPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="unitPhone != null">
+        unitPhone = #{unitFax,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="unitPhone != null">
+        unitPhone = #{unitFax,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="ctime!=null">
+        ctime=#{ctime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="memberinfo" parameterType="java.lang.String" resultMap="BaseResultMap">
+ select  obj.* from member_information obj where  obj.uid=#{uid,jdbcType=VARCHAR}
+  </select>
+
+</mapper>

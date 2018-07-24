@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="chinazxt" />
+        <module name="configserver" />
+        <module name="eurekaserver" />
+        <module name="feignserver" />
+        <module name="paper-approve" />
+        <module name="paper-common" />
+        <module name="paper-train" />
+        <module name="paperserver" />
+        <module name="Registered-members" />
+        <module name="RegisteredMember" />
+        <module name="Registeredmembers" />
+        <module name="RegisteredMembers" />
+        <module name="zuulserver" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="chinazxt" target="1.8" />
+      <module name="configserver" target="1.8" />
+      <module name="cpccacloud" target="1.6" />
+      <module name="eurekaserver" target="1.8" />
+      <module name="feignserver" target="1.8" />
+      <module name="paper-approve" target="1.8" />
+      <module name="paper-common" target="1.8" />
+      <module name="paper-train" target="1.8" />
+      <module name="paperserver" target="1.8" />
+      <module name="Registered-members" target="1.8" />
+      <module name="RegisteredMember" target="1.8" />
+      <module name="Registeredmember" target="1.8" />
+      <module name="RegisteredMembers" target="1.8" />
+      <module name="Registeredmembers" target="1.6" />
+      <module name="zuulserver" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

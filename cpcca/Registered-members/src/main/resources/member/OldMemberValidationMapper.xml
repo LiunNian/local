@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.registered.member.dao.OldMemberValidationMapper">
+  <resultMap id="BaseResultMap" type="com.registered.member.model.OldMenberValidation">
+    <id column="C_ID" jdbcType="VARCHAR" property="id" />
+    <id column="会员编码" jdbcType="VARCHAR" property="code" />
+    <result column="单位名称" jdbcType="VARCHAR" property="unitName" />
+    <result column="法人代表姓名" jdbcType="VARCHAR" property="legalName" />
+    <result column="联络人姓名" jdbcType="VARCHAR" property="contactName" />
+    <result column="联络人手机" jdbcType="VARCHAR" property="contactPhone" />
+    <result column="C_USERNAME" jdbcType="VARCHAR" property="loginName" />
+    <result column="C_PASSWORD" jdbcType="VARCHAR" property="loginPassword" />
+  </resultMap>
+  <select id="checkOldMember" resultType="java.lang.String">
+  select COALESCE(obj.`会员编码`,"empty") from danweihuiyuan obj
+   where obj.`单位名称`=#{unitName,jdbcType=VARCHAR} and obj.`法人代表姓名`=#{legalName,jdbcType=VARCHAR}
+   and obj.`联络人姓名`=#{contactName,jdbcType=VARCHAR} and obj.`联络人手机`=#{contactPhone,jdbcType=VARCHAR}
+  </select>
+  <select id="checkOldMemberUser" resultType="java.lang.String">
+select COALESCE(obj.C_ID,"empty") from olduser obj where obj.C_USERNAME=#{loginName,jdbcType=VARCHAR} and obj.C_PASSWORD=#{loginPassword,jdbcType=VARCHAR}
+  </select>
+</mapper>

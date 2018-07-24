@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!--去掉注释-->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!--需要配置数据库连接-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/cpcca?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false"
+                        userId="root"
+                        password=""
+        >
+        </jdbcConnection>
+
+    <javaTypeResolver >
+        <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+
+    <!--指定javaBean生成的位置 javaBean生成的位置-->
+    <javaModelGenerator targetPackage="com.paper.member.model" targetProject="./src/main/java/">
+        <property name="enableSubPackages" value="true" />
+        <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+
+    <!--sql映射文件生成的位置-->
+    <sqlMapGenerator targetPackage="mapping.train"  targetProject="./src/main/resources/">
+        <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+
+
+    <!--指定dao接口生成的位置-->
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.paper.member.dao" targetProject="./src/main/java">
+        <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+
+
+    <table tableName="train_user" domainObjectName="TrainUser"
+           enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+           enableSelectByExample="false" selectByExampleQueryId="false" >
+    <property name="useActualColumnNames" value="true"/></table>
+
+
+    <table tableName="train_mesaage" domainObjectName="TrainMesaage"
+           enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+           enableSelectByExample="false" selectByExampleQueryId="false" >
+        <property name="useActualColumnNames" value="true"/></table>
+
+    <table tableName="train_memberunit" domainObjectName="MemberUnit"
+           enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+           enableSelectByExample="false" selectByExampleQueryId="false" >
+        <property name="useActualColumnNames" value="true"/></table>
+
+    <table tableName="train_apply" domainObjectName="TrainApply"
+           enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+           enableSelectByExample="false" selectByExampleQueryId="false" >
+        <property name="useActualColumnNames" value="true"/></table>
+</context>
+    <!--配置方法
+    https://blog.csdn.net/liudongdong0909/article/details/51534735-->
+</generatorConfiguration>
+

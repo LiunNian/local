@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paper.member.dao.TrainMesaageMapper">
+  <resultMap id="BaseResultMap" type="com.paper.train.model.TrainMesaage">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="classes" jdbcType="VARCHAR" property="classes" />
+    <result column="intro" jdbcType="VARCHAR" property="intro" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="startDate" jdbcType="TIMESTAMP" property="startDate" />
+    <result column="stopDate" jdbcType="TIMESTAMP" property="stopDate" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="imgpath" jdbcType="VARCHAR" property="imgpath" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="memberprice" jdbcType="DOUBLE" property="memberprice" />
+    <result column="obj" jdbcType="VARCHAR" property="obj" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, classes, intro, level, startDate, stopDate, address, imgpath, price, memberprice, 
+    obj
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from train_mesaage
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="seleceAll" resultType="java.util.Map">
+    select id, classes, NULLIF(intro,'') intro, price, NULLIF(obj,'') obj,
+    concat(DATE_FORMAT(startDate,'%Y/%m/%d'),'-',DATE_FORMAT(stopDate,'%Y/%m/%d')) time, NULLIF(address,'') address
+    from train_mesaage
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from train_mesaage
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.paper.train.model.TrainMesaage">
+    insert into train_mesaage (id, classes, intro, 
+      level, startDate, stopDate, 
+      address, imgpath, price, 
+      memberprice, obj)
+    values (#{id,jdbcType=INTEGER}, #{classes,jdbcType=VARCHAR}, #{intro,jdbcType=VARCHAR}, 
+      #{level,jdbcType=INTEGER}, #{startDate,jdbcType=TIMESTAMP}, #{stopDate,jdbcType=TIMESTAMP}, 
+      #{address,jdbcType=VARCHAR}, #{imgpath,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE}, 
+      #{memberprice,jdbcType=DOUBLE}, #{obj,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.paper.train.model.TrainMesaage">
+    insert into train_mesaage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="classes != null">
+        classes,
+      </if>
+      <if test="intro != null">
+        intro,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+      <if test="startDate != null">
+        startDate,
+      </if>
+      <if test="stopDate != null">
+        stopDate,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="imgpath != null">
+        imgpath,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="memberprice != null">
+        memberprice,
+      </if>
+      <if test="obj != null">
+        obj,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="classes != null">
+        #{classes,jdbcType=VARCHAR},
+      </if>
+      <if test="intro != null">
+        #{intro,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="startDate != null">
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stopDate != null">
+        #{stopDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="imgpath != null">
+        #{imgpath,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="memberprice != null">
+        #{memberprice,jdbcType=DOUBLE},
+      </if>
+      <if test="obj != null">
+        #{obj,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.paper.train.model.TrainMesaage">
+    update train_mesaage
+    <set>
+      <if test="classes != null">
+        classes = #{classes,jdbcType=VARCHAR},
+      </if>
+      <if test="intro != null">
+        intro = #{intro,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="startDate != null">
+        startDate = #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stopDate != null">
+        stopDate = #{stopDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="imgpath != null">
+        imgpath = #{imgpath,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="memberprice != null">
+        memberprice = #{memberprice,jdbcType=DOUBLE},
+      </if>
+      <if test="obj != null">
+        obj = #{obj,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.paper.train.model.TrainMesaage">
+    update train_mesaage
+    set classes = #{classes,jdbcType=VARCHAR},
+      intro = #{intro,jdbcType=VARCHAR},
+      level = #{level,jdbcType=INTEGER},
+      startDate = #{startDate,jdbcType=TIMESTAMP},
+      stopDate = #{stopDate,jdbcType=TIMESTAMP},
+      address = #{address,jdbcType=VARCHAR},
+      imgpath = #{imgpath,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DOUBLE},
+      memberprice = #{memberprice,jdbcType=DOUBLE},
+      obj = #{obj,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
